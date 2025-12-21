@@ -2,9 +2,9 @@ package deque;
 
 import java.util.Iterator;
 
-public class LinkedListDeque<T> implements Deque<T>{
+public class LinkedListDeque<T> implements Deque<T> {
     private int size;
-    ListNode<T> head, tail;
+    private ListNode<T> head, tail;
 
     private static class ListNode<T> {
         public T data;
@@ -38,9 +38,6 @@ public class LinkedListDeque<T> implements Deque<T>{
         tail.pre.next = node;
         tail.pre = node;
     }
-    public boolean isEmpty() {
-        return size == 0;
-    }
 
     public int size() {
         return size;
@@ -48,12 +45,13 @@ public class LinkedListDeque<T> implements Deque<T>{
 
     public void printDeque() {
         ListNode<T> current = head;
-        while ( current != tail) {
+        while (current != tail) {
             System.out.print(current.data + " ");
             current = current.next;
         }
         System.out.println();
     }
+
     public T removeFirst() {
         if (isEmpty()) {
             return null;
@@ -139,7 +137,7 @@ public class LinkedListDeque<T> implements Deque<T>{
 
         ListNode<T> thisNode = this.head.next;
         ListNode<?> thatNode = that.head.next;
-        while(thisNode != this.tail) {
+        while (thisNode != this.tail) {
             if (!java.util.Objects.equals(thisNode.data, thatNode.data)) {
                 return false;
             }

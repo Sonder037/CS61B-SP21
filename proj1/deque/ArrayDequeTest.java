@@ -1,10 +1,13 @@
 package deque;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 
-/** Performs some basic linked list tests. */
+/**
+ * Performs some basic linked list tests.
+ */
 public class ArrayDequeTest {
 
     @Test
@@ -71,8 +74,8 @@ public class ArrayDequeTest {
     @Test
     /* Check if you can create ArrayDeques with different parameterized types*/
     public void multipleParamTest() {
-        ArrayDeque<String>  ad1 = new ArrayDeque<String>();
-        ArrayDeque<Double>  lld2 = new ArrayDeque<Double>();
+        ArrayDeque<String> ad1 = new ArrayDeque<String>();
+        ArrayDeque<Double> lld2 = new ArrayDeque<Double>();
         ArrayDeque<Boolean> lld3 = new ArrayDeque<Boolean>();
 
         ad1.addFirst("string");
