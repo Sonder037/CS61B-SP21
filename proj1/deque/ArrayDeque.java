@@ -129,10 +129,8 @@ public class ArrayDeque<T> implements Deque<T> {
             return false;
         }
         
-        Iterator<?> thisIterator = this.iterator();
-        Iterator<?> otherIterator = other.iterator();
-        while (thisIterator.hasNext() && otherIterator.hasNext()) {
-            if (!java.util.Objects.equals(thisIterator.next(), otherIterator.next())) {
+        for (int i = 0; i < size; i++) {
+            if (!this.get(i).equals(other.get(i))) {
                 return false;
             }
         }
