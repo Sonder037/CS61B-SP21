@@ -81,7 +81,7 @@ public class ArrayDeque<T> implements Deque<T> {
         items[tail % capacity] = null;
         tail = (tail - 1 + capacity) % capacity;
         size--;
-        if (size > 16 && size < capacity / 4 && capacity / 2 >= 8) {
+        if (capacity > 16 && size < capacity / 4) {
             resize(capacity / 4);
         }
         return item;
@@ -118,15 +118,21 @@ public class ArrayDeque<T> implements Deque<T> {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (o == null) {
             return false;
         }
-        ArrayDeque<T> other = (ArrayDeque<T>) o;
-        if (size != other.size) {
+        if (!(o instanceof Deque)) {
             return false;
         }
-        for (int i = 0; i < size; i++) {
-            if (!items[(head + i) % capacity].equals(other.items[(other.head + i) % other.capacity])) {
+        Deque<?> other = (Deque<?>) o;
+        if (this.size() != other.size()) {
+            return false;
+        }
+        
+        Iterator<?> thisIterator = this.iterator();
+        Iterator<?> otherIterator = other.iterator();
+        while (thisIterator.hasNext() && otherIterator.hasNext()) {
+            if (!java.util.Objects.equals(thisIterator.next(), otherIterator.next())) {
                 return false;
             }
         }
