@@ -67,7 +67,7 @@ public class ArrayDeque<T> implements Deque<T> {
         items[head % capacity] = null;
         head = (head + 1) % capacity;
         size--;
-        if (size > 16 && size < capacity / 4 && capacity / 2 >= 8) {
+        if (capacity > 16 && size < capacity / 4) {
             resize(capacity / 4);
         }
         return item;
@@ -94,11 +94,12 @@ public class ArrayDeque<T> implements Deque<T> {
         return items[(head + index) % capacity];
     }
 
+    @Override
     public Iterator<T> iterator() {
-        return new ArratDequeueIterator();
+        return new ArrayDequeueIterator();
     }
 
-    private class ArratDequeueIterator implements Iterator<T> {
+    private class ArrayDequeueIterator implements Iterator<T> {
         private int p = 0;
 
         @Override
