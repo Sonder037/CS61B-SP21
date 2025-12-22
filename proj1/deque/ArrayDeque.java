@@ -94,7 +94,6 @@ public class ArrayDeque<T> implements Deque<T> {
         return items[(head + index) % capacity];
     }
 
-    @Override
     public Iterator<T> iterator() {
         return new ArrayDequeueIterator();
     }

@@ -124,7 +124,6 @@ public class LinkedListDeque<T> implements Deque<T> {
         return findData(current.getNext(), index);
     }
 
-    @Override
     public Iterator<T> iterator() {
         return new LinkedListDequeIterator();
     }
